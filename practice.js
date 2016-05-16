@@ -148,11 +148,11 @@ var states = {
 //Now, loop through your states object and if the states population is greater than 30K, alert that state.
 
   //Code Here
-for(var prop in states){
+/*for(var prop in states){
   if(states[prop] > 30000){
     alert(prop);
   }
-}
+}*/
 
 
 
@@ -174,10 +174,16 @@ var user1 = {
 that each value is truthy. If it's not truthy, remove it from the object. */
 
   //Code Here
-
+for(var prop in user1){
+  if(user1[prop] === undefined || user1[prop] === null || user1[prop] === 0 || user1[prop] === "" || user1[prop] === false || user1[prop] === NaN){
+    delete user1[prop];
+  }
+}
 //Once you get your truthy Object, Change the remaining values in the object to be specific to you (name: 'your name', username: 'your username'), rather than my information.
 
   //Code Here
+  user1.name = "CJ Powers";
+  user1.username = "cjpwrs"
 
 
 
@@ -202,10 +208,13 @@ var user2 = {
 // name -> 'Tyler S. McGinnis', email -> 'tyler.mcginnis@devmounta.in'. Make that change.
 
   //Code Here
+user2.name = "Tyler S. McGinnis";
+user2.email = "tyler.mcginnis@devmounta.in";
 
 //Now call the sayName method that's on the user object which will alert the users email
 
   //Code Here
+//user2.sayName();
 
 
 
@@ -218,17 +227,26 @@ var user2 = {
 //Create an empty object called methodCollection.
 
   //Code Here
+var methodCollection = {};
 
 /*Now add two methods (functions that are properties on objects) to your methodCollection
 object. One called 'alertHello' which alerts 'hello' and another method called logHello
  which logs 'hello' to the console. */
 
   //Code Here
+methodCollection.alertHello = function(){
+  alert("hello");
+}
+
+methodCollection.logHello = function() {
+  console.log("hello");
+}
 
 //Now call your alertHello and logHello methods.
 
   //Code Here
-
+//methodCollection.alertHello();
+//methodCollection.logHello();
 
 
 //NEXT PROBLEM
@@ -238,6 +256,18 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 // Create a function called MakePerson which takes in name, birthday, ssn as its parameters and returns a new object with all of the information that you passed in.
 
   //Code Here
+function MakePerson(name, birthday, ssn){
+  var person = {
+    name: name,
+    birthday: birthday,
+    ssn: ssn
+  }
+  /*person.name = name
+  person.birthday = birthday;
+  person.ssn = ssn;*/
+  
+  return person;
+}
 
 
 
@@ -248,6 +278,14 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 // Create a function called MakeCard which takes in cardNumber, expirationDate, and securityCode to make a Credit Card object and returns that object so that whenever you invoke MakeCard, you get a brand new credit card.
 
   //Code Here
+function MakeCard(cardNumber, expirationDate, securityCode){
+  var creditCard = {
+    cardNumber: cardNumber,
+    expirationDate: expirationDate,
+    securityCode: securityCode
+  }
+  return creditCard;
+}
 
 
 
@@ -261,3 +299,13 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 */
 
   //Code Here
+function bindCard(person, creditCard){
+  var newObject = {};
+  for(var prop in person){
+    newObject[prop] = person[prop];
+  }
+  for(var prop in creditCard){
+    newObject[prop] = person[prop];
+  }
+  return newObject;
+}
